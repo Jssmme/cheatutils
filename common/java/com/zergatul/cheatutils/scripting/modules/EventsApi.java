@@ -113,4 +113,14 @@ public class EventsApi {
     public void onPlayerInfoUpdate(PlayerInfoUpdateConsumer consumer) {
         EventsScripting.instance.addOnPlayerInfoUpdate(consumer);
     }
+
+    @ApiVisibility(ApiType.EVENTS)
+    public void onClientToServerPacket(PacketEventConsumer consumer) {
+        EventsScripting.instance.addOnClientToServerPacket(consumer);
+    }
+
+    @ApiVisibility(ApiType.EVENTS)
+    public void onServerToClientPacket(PacketEventConsumer consumer) {
+        EventsScripting.instance.addOnServerToClientPacket(consumer);
+    }
 }

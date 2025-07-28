@@ -1,5 +1,6 @@
 package com.zergatul.cheatutils.scripting;
 
+import com.zergatul.cheatutils.scripting.modules.PacketEvent;
 import com.zergatul.cheatutils.scripting.types.*;
 import com.zergatul.cheatutils.scripting.types.nbt.*;
 import com.zergatul.scripting.compiler.CompilationParameters;
@@ -116,6 +117,7 @@ public enum ScriptType {
                         LongArrayTagWrapper.class
                 ))
                 .addCustomTypes(List.of(UUIDWrapper.class))
+                .addCustomType(PacketEvent.class)
                 .setInterface(funcInterface)
                 .setAsyncReturnType(asyncReturnType)
                 .setVisibilityChecker(new VisibilityChecker() {
