@@ -1,11 +1,12 @@
 package com.zergatul.cheatutils.scripting;
 
+import com.zergatul.cheatutils.configs.ConfigStore;
 import com.zergatul.cheatutils.scripting.modules.PacketEvent;
 import com.zergatul.cheatutils.scripting.types.*;
 import com.zergatul.cheatutils.scripting.types.nbt.*;
 import com.zergatul.scripting.compiler.CompilationParameters;
 import com.zergatul.scripting.compiler.CompilationParametersBuilder;
-import com.zergatul.scripting.compiler.VisibilityChecker;
+import com.zergatul.scripting.compiler.JavaInteropPolicy;
 import com.zergatul.scripting.type.SType;
 import com.zergatul.scripting.type.SVoidType;
 
@@ -120,10 +121,20 @@ public enum ScriptType {
                 .addCustomType(PacketEvent.class)
                 .setInterface(funcInterface)
                 .setAsyncReturnType(asyncReturnType)
-                .setVisibilityChecker(new VisibilityChecker() {
+                .setPolicy(new JavaInteropPolicy() {
                     @Override
-                    public boolean isVisible(Method method) {
+                    public boolean isMethodVisible(Method method) {
                         return VisibilityCheck.isOk(method, apis);
+                    }
+
+                    @Override
+                    public boolean isJavaTypeUsageAllowed() {
+                        return ConfigStore.instance.getConfig().coreConfig.advancedScripting;
+                    }
+
+                    @Override
+                    public String getJavaTypeUsageError() {
+                        return "Java<…> types are not permitted. Enable Advanced Scripting to use Java interop";
                     }
                 })
                 .setClassNamePrefix(name)
