@@ -1,13 +1,13 @@
 <div class="module-main" v-if="config">
     <div class="description">
-        Add markers to your world so you can see them from any location. For example your base or some farm.<br>
+        添加 markers to your world so you can see them from any location. For example your base or some farm.<br>
         Min Distance parameter: if target location is closer than specified value - it is not rendered.<br>
         You can use it so marker doesn't distract you when you are doing something on this location.
     </div>
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
 
         <fieldset>
@@ -42,7 +42,7 @@
 
         <fieldset>
             <legend>
-                <button class="w8" @click="addMarker()">Add Marker</button>
+                <button class="w8" @click="addMarker()">添加 Marker</button>
             </legend>
             <div>
                 <table>
@@ -88,7 +88,7 @@
             <div>
                 <ul class="list-base marker-list">
                     <li v-for="(entry, index) in config.entries">
-                        <button class="btn" @click="remove(index)">Remove</button>
+                        <button class="btn" @click="remove(index)">删除</button>
                         <div class="name">{{ entry.name }}</div>
                         <div class="dimension">{{ entry.dimension }}</div>
                         <div class="color"><color-box :color="entry.color"></color-box></div>

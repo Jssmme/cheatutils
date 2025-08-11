@@ -1,29 +1,29 @@
 <div class="main">
     <div class="modules">
         <div class="module-group">
-            <div class="module-group-header">Automation</div>
+            <div class="module-group-header">自动化功能</div>
             <module-button v-for="module in automation" :module="module" :statuses="statuses" :filtered="filtered"></module-button>
         </div>
         <div class="module-group">
-            <div class="module-group-header">ESP</div>
+            <div class="module-group-header">透视功能</div>
             <module-button v-for="module in esp" :module="module" :statuses="statuses" :filtered="filtered"></module-button>
         </div>
         <div class="module-group">
-            <div class="module-group-header">Hacks</div>
+            <div class="module-group-header">黑客功能</div>
             <module-button v-for="module in hacks" :module="module" :statuses="statuses" :filtered="filtered"></module-button>
         </div>
         <div class="module-group">
-            <div class="module-group-header">Visuals</div>
+            <div class="module-group-header">视觉功能</div>
             <module-button v-for="module in visuals" :module="module" :statuses="statuses" :filtered="filtered"></module-button>
         </div>
         <div class="module-group">
-            <div class="module-group-header">Scripting</div>
+            <div class="module-group-header">脚本功能</div>
             <module-button v-for="module in scripting" :module="module" :statuses="statuses" :filtered="filtered"></module-button>
         </div>
         <div class="module-group">
-            <div class="module-group-header">Utility</div>
+            <div class="module-group-header">实用工具</div>
             <module-button v-for="module in utility" :module="module" :statuses="statuses" :filtered="filtered"></module-button>
-            <button @click="onMatrixServerClick()">Matrix Server</button>
+            <button @click="onMatrixServerClick()">Matrix 服务器</button>
         </div>
     </div>
 </div>

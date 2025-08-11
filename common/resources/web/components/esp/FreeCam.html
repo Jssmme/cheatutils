@@ -80,7 +80,7 @@
         <fieldset v-if="path">
             <legend>Path</legend>
             <div class="actions">
-                <button class="action" @click="addPathPoint()">Add</button>
+                <button class="action" @click="addPathPoint()">添加</button>
                 <button class="action" @click="clearPath()">Clear</button>
             </div>
             <div>
@@ -91,7 +91,7 @@
                 <input type="text" class="w5" v-model="time">
             </div>
             <div class="section-description">
-                Create path and automate camera movement (similar to Replay Mod). Use <b>freeCam.startPath();</b> API method to assign keybinding.<br>
+                创建 path and automate camera movement (similar to Replay Mod). Use <b>freeCam.startPath();</b> API method to assign keybinding.<br>
                 To stop moving along path you can exit FreeCam mode.<br>
                 Specify time in millisecond between 2 points. Time is ignored for first point.<br>
                 To add camera point you must be in FreeCam mode. Module remembers current camera position and rotation.<br>

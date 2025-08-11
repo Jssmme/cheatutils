@@ -1,23 +1,23 @@
 <div class="module-main" v-if="config">
     <div class="description">
-        Automatically consumes item held in offhand. Can be useful for afk farms.
+        自动吃副手持有的食物。对挂机农场很有用。
     </div>
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
         <fieldset>
             <legend>
-                <switch-checkbox v-model="config.isHungerLimitEnabled" @change="update()">Enable Hunger Limit</switch-checkbox>
+                <switch-checkbox v-model="config.isHungerLimitEnabled" @change="update()">启用饥饿限制</switch-checkbox>
             </legend>
             <div class="flex-row">
-                <span class="field-description">Min Hunger:</span>
+                <span class="field-description">最小饥饿值:</span>
                 <input type="text" v-model="config.hungerLimit" @change="update()">
             </div>
             <div class="section-description">
-                If Hunger Limit is disabled module consumes food as soon as it can do.<br>
-                You can specify hunger limit after which module will consume food.
+                如果禁用饥饿限制，模组会在能吃食物时立即吃食物。<br>
+                你可以指定饥饿限制，达到限制后才会吃食物。
             </div>
         </fieldset>
     </div>

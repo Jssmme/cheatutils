@@ -9,7 +9,7 @@
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
 
         <table>
@@ -78,8 +78,8 @@
         </table>
 
         <div class="actions">
-            <button class="w8" @click="save()" v-if="config">Save</button>
-            <button class="w12" @click="showApiRef()">Show/Hide API Reference</button>
+            <button class="w8" @click="save()" v-if="config">保存</button>
+            <button class="w12" @click="showApiRef()">显示/隐藏API参考</button>
         </div>
 
         <script-editor v-model="code" :type="'BLOCK_AUTOMATION'" v-show="!showRefs"></script-editor>

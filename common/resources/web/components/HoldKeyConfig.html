@@ -1,6 +1,6 @@
 <div>
     <div>
-        <button style="width: 200px;" @click="$emit('back')">Back</button>
+        <button style="width: 200px;" @click="$emit('back')">返回</button>
     </div>
     <fieldset style="padding-top: 16px;" v-if="config">
         <legend>Hold Key</legend>
@@ -12,7 +12,7 @@
                 <input type="checkbox" class="switch"
                     v-model="config.enabled"
                     @change="update()">
-                <span>Enabled</span>
+                <span>启用</span>
             </label>
         </div>
         <div>

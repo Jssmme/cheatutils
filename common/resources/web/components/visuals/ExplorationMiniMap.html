@@ -9,7 +9,7 @@
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
 
         <fieldset>
@@ -26,7 +26,7 @@
         </fieldset>
 
         <div class="actions">
-            <button class="w8" @click="addMarker()">Add Marker</button>
+            <button class="w8" @click="addMarker()">添加 Marker</button>
             <button class="w8" @click="clearMarkers()">Clear Markers</button>
         </div>
 
@@ -35,7 +35,7 @@
                 <textarea v-model="markersJson"></textarea>
             </div>
             <div>
-                <button class="w10" @click="addMarkers()">Add Markers from JSON</button>
+                <button class="w10" @click="addMarkers()">添加 Markers from JSON</button>
             </div>
             <div class="section-description">
                 Example: [{ x: 100, z: 200}, { x: 200, z: 300 }]

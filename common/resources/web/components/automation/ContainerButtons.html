@@ -39,10 +39,10 @@
 
         <fieldset>
             <legend>
-                <switch-checkbox v-model="config.useFilter" @change="update()">Use Filter</switch-checkbox>
+                <switch-checkbox v-model="config.use过滤" @change="update()">Use 过滤</switch-checkbox>
             </legend>
             <div class="section-description">
-                Add items you want to take with "Take All" or "Drop All" buttons.
+                添加 items you want to take with "Take All" or "Drop All" buttons.
             </div>
             <item-list v-model="config.items" @change="update()"></item-list>
         </fieldset>

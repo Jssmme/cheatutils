@@ -6,13 +6,13 @@
     <div class="module-sections">
         <template v-if="mode == 'list'">
             <div>
-                <button class="w8" @click="add()">Add...</button>
+                <button class="w8" @click="add()">添加...</button>
             </div>
             <div class="scripts-list">
                 <table>
                     <tr v-for="script in list">
                         <td><button class="w4" @click="edit(script.name)">Edit</button></td>
-                        <td><button class="w4" @click="remove(script.name)">Remove</button></td>
+                        <td><button class="w4" @click="remove(script.name)">删除</button></td>
                         <td>
                             <select v-model="script.key" @change="assign(script)">
                                 <option value="-1">&lt;Assign to key bind...&gt;</option>
@@ -55,9 +55,9 @@
         </template>
         <template v-if="mode == 'add' || mode == 'edit'">
             <div class="actions">
-                <button class="w8" @click="mode = 'list'">Back</button>
-                <button class="w8" @click="save()">Save</button>
-                <button class="w12" @click="showApiRef()">Show/Hide API Reference</button>
+                <button class="w8" @click="mode = 'list'">返回</button>
+                <button class="w8" @click="save()">保存</button>
+                <button class="w12" @click="showApiRef()">显示/隐藏API参考</button>
             </div>
             <div class="flex-row">
                 <span>Name:</span>

@@ -1,16 +1,16 @@
 <div class="module-main" v-if="config">
     <div class="description">
-        Automatically mines blocks surrounding your target block. Activates only when instamine is active.
+        自动挖掘目标方块周围的方块。仅在自动挖掘激活时激活。
     </div>
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
 
         <fieldset>
             <legend>
-                Radius
+                半径
             </legend>
             <div>
                 <input type="text" class="w3" v-model="config.radius" @change="update()">
@@ -19,10 +19,10 @@
 
         <fieldset>
             <legend>
-                <switch-checkbox v-model="config.preview" @change="update()">Preview</switch-checkbox>
+                <switch-checkbox v-model="config.preview" @change="update()">实时预览</switch-checkbox>
             </legend>
             <div class="section-description">
-                Shows realtime preview of blocks that can be mined in 1 click
+                实时预览可以挖掘的方块。
             </div>
         </fieldset>
     </div>

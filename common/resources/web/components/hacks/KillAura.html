@@ -1,40 +1,40 @@
 <div class="module-main kill-aura" v-if="config">
     <div class="description">
-        Automatically attacks entities in range with the current item in hand.
+        自动攻击范围内的实体，使用当前手中物品。
     </div>
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
 
         <fieldset>
             <legend>
-                Delay Method
+                攻击延迟
             </legend>
             <div>
                 <div>
-                    <radio name="method" value="ConstDelay" v-model="config.delayMode" @change="update()">Constant Tick Delay</radio>
+                    <radio name="method" value="ConstDelay" v-model="config.delayMode" @change="update()">固定刻延迟</radio>
                 </div>
                 <div>
-                    <radio name="method" value="Cooldown" v-model="config.delayMode" @change="update()">Item Cooldown</radio>
+                    <radio name="method" value="Cooldown" v-model="config.delayMode" @change="update()">当前物品冷却</radio>
                 </div>
                 <div v-if="config.delayMode == 'ConstDelay'">
                     <div class="flex-row">
-                        <span class="field-description">Tick Interval:</span>
+                        <span class="field-description">刻间隔:</span>
                         <input type="text" class="w3" v-model="config.attackTickInterval" @change="update()">
                     </div>
                     <div class="section-description">
-                        How often kill aura attacks. 1 = fastest (attack every tick), 20 = attack once a second and so on. In other words: attack every X ticks.
+                        杀戮光环攻击频率。1 = 最快（每刻攻击），20 = 每秒攻击一次，以此类推。换句话说：每X刻攻击一次。
                     </div>
                 </div>
                 <div v-if="config.delayMode == 'Cooldown'">
                     <div class="flex-row">
-                        <span class="field-description">Extra Ticks:</span>
+                        <span class="field-description">额外刻数:</span>
                         <input type="text" class="w3" v-model="config.extraTicks" @change="update()">
                     </div>
                     <div class="section-description">
-                        Wait additional ticks once cooldown passed. Can be negative, in this case module will attack before cooldown.
+                        冷却结束后等待额外刻数。可以为负数，在这种情况下模组会在冷却前攻击。
                     </div>
                 </div>
             </div>
@@ -42,27 +42,27 @@
 
         <fieldset>
             <legend>
-                <switch-checkbox v-model="config.overrideAttackRange" @change="update()">Override attack range</switch-checkbox>
+                <switch-checkbox v-model="config.overrideAttackRange" @change="update()">覆盖攻击范围</switch-checkbox>
             </legend>
             <div class="flex-row">
-                <span class="field-description">Max Range:</span>
+                <span class="field-description">最大范围:</span>
                 <input type="text" class="w3" v-model="config.maxRange" @change="update()">
             </div>
             <div class="section-description">
-                If disabled uses current attack range, possibly modified by Reach hack.<br>
-                When disabled in Fabric version, it will not be able to detect attack range modified by other mods.
+                如果禁用则使用当前攻击范围，可能被Reach黑客修改。<br>
+                在Fabric版本中禁用时，将无法检测到被其他模组修改的攻击范围。
             </div>
         </fieldset>
 
         <fieldset>
             <legend>
-                Limit target coverage by angle
+                按角度限制目标覆盖范围
             </legend>
             <table>
                 <tbody>
                     <tr>
                         <td>
-                            <span class="field-description">Delta horizontal angle:</span>
+                            <span class="field-description">水平角度差:</span>
                         </td>
                         <td>
                             <input type="text" class="w3" v-model="config.maxHorizontalAngle" @change="update()">
@@ -70,7 +70,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <span class="field-description">Delta vertical angle:</span>
+                            <span class="field-description">垂直角度差:</span>
                         </td>
                         <td>
                             <input type="text" class="w3" v-model="config.maxVerticalAngle" @change="update()">
@@ -79,38 +79,38 @@
                 </tbody>
             </table>
             <div class="section-description">
-                In degrees. Value 180 means no limit. But it is better to leave field(s) empty for this purpose.<br>
-                For every possible target module calculates how far you need to rotate to attack target. If this angle exceeds specified limit, module will not attack this target.<br>
-                Note: module is not smart enough to attack on edges of hitbox. It always attacks center of entities bounding box. Angle is measured relatively to this point.
+                以度为单位。值180表示无限制。但为此目的最好将字段留空。<br>
+                对于每个可能的目标，模组计算攻击目标需要旋转多远。如果这个角度超过指定限制，模组将不会攻击这个目标。<br>
+                注意：模组不够智能，无法攻击碰撞箱边缘。它总是攻击实体边界框的中心。角度相对于这个点测量。
             </div>
         </fieldset>
 
         <fieldset>
             <legend>
-                <switch-checkbox v-model="config.attackAll" @change="update()">Attack multiple targets per tick</switch-checkbox>
+                <switch-checkbox v-model="config.attackAll" @change="update()">每刻攻击多个目标</switch-checkbox>
             </legend>
             <div class="section-description">
-                Module attack all targets in range. Only first target (closest) receives full damage.
+                模组横扫攻击范围内的所有目标。只有第一个目标（最近的）受到全额伤害。
             </div>
         </fieldset>
 
         <fieldset>
             <legend>
-                <switch-checkbox v-model="config.autoRotate" @change="update()">Auto Rotate</switch-checkbox>
+                <switch-checkbox v-model="config.autoRotate" @change="update()">自动旋转</switch-checkbox>
             </legend>
             <div class="section-description">
-                Automatically rotates you in the direction of the target each time Kill Aura attacks a target. Has no effect on client side.<br>
-                When enabled Kill Aura will not work from Boats/Minecarts or other rideable entities.
+                每次杀戮光环攻击目标时自动将你旋转到目标方向。对客户端没有影响。<br>
+                启用时杀戮光环将无法从船/矿车或其他可骑乘实体上工作。
             </div>
         </fieldset>
 
         <fieldset class="flex-column" v-if="priorityList">
-            <legend>Priorities</legend>
+            <legend>优先级</legend>
 
             <template v-if="state == 'list'">
                 <div class="actions">
-                    <button class="w10" @click="openAddNew()">Add Priority Entry</button>
-                    <button class="w12" @click="openCreateNewCustomEntry()">Create Custom Priority Entry...</button>
+                    <button class="w10" @click="openAddNew()">添加优先级条目</button>
+                    <button class="w12" @click="openCreateNewCustomEntry()">创建自定义优先级条目...</button>
                 </div>
                 <table class="bordered">
                     <tr v-for="(entry, index) in config.priorities">
@@ -125,7 +125,7 @@
                             <div class="flex-row">
                                 <button @click="moveUp(index)">🡅</button>
                                 <button @click="moveDown(index)">🡇</button>
-                                <button class="w5" @click="removePriorityEntry(index)">Remove</button>
+                                <button class="w5" @click="removePriorityEntry(index)">删除</button>
                             </div>
                         </td>
                     </tr>
@@ -134,10 +134,10 @@
 
             <template v-if="state == 'add'">
                 <div class="actions">
-                    <button class="w10" @click="state = 'list'">Back to list</button>
+                    <button class="w10" @click="state = 'list'">返回列表</button>
                 </div>
                 <div class="flex-row">
-                    <span>Filter:</span>
+                    <span>过滤:</span>
                     <input type="text" class="search"
                         v-model="search"
                         @input="filterPriorityList()">
@@ -149,10 +149,10 @@
                             <div class="smaller">{{ entry.description }}</div>
                         </td>
                         <td>
-                            <button class="w5" @click="deleteCustomEntry(entry)" v-if="entry.className && !entryInPrioritiesList(entry)">Delete</button>
+                            <button class="w5" @click="deleteCustomEntry(entry)" v-if="entry.className && !entryInPrioritiesList(entry)">删除</button>
                         </td>
                         <td>
-                            <button class="w5" @click="addPriorityEntry(entry)" v-if="!entryInPrioritiesList(entry)">Add</button>
+                            <button class="w5" @click="addPriorityEntry(entry)" v-if="!entryInPrioritiesList(entry)">添加</button>
                         </td>
                     </tr>
                 </table>
@@ -160,14 +160,14 @@
 
             <template v-if="state == 'create-custom'">
                 <div class="actions">
-                    <button class="w8" @click="state = 'list'">Back to list</button>
-                    <button class="w8" @click="createNewCustomEntry()">Create</button>
+                    <button class="w8" @click="state = 'list'">返回列表</button>
+                    <button class="w8" @click="createNewCustomEntry()">创建</button>
                 </div>
                 <table>
                     <tbody>
                         <tr>
                             <td>
-                                <span>Entry Name:</span>
+                                <span>实体名称:</span>
                             </td>
                             <td>
                                 <input type="text" class="w30" v-model="newCustomEntry.name">
@@ -175,7 +175,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Description:</span>
+                                <span>描述:</span>
                             </td>
                             <td>
                                 <input type="text" class="w30" v-model="newCustomEntry.description">
@@ -183,7 +183,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Class Name:</span>
+                                <span>类名:</span>
                             </td>
                             <td>
                                 <input type="text" class="w30" v-model="newCustomEntry.className">
@@ -192,25 +192,25 @@
                     </tbody>
                 </table>
                 <div class="section-description">
-                    You can copy class name from Entity ESP all entities list. Example: net.minecraft.world.entity.animal.Cow
+                    你可以从实体透视的所有实体列表中复制类名。示例：net.minecraft.world.entity.animal.Cow
                 </div>
             </template>
         </fieldset>
 
         <fieldset class="flex-column">
             <legend>
-                <switch-checkbox v-model="config.scriptEnabled" @change="update()">Custom Script</switch-checkbox>
+                <switch-checkbox v-model="config.scriptEnabled" @change="update()">自定义脚本</switch-checkbox>
             </legend>
             <template v-if="config.scriptEnabled">
                 <div class="section-description">
-                    Write script to decide if Kill Aura should target specific entity.<br>
-                    Use <b>id</b> variable to see id of the current entity.<br>
-                    Return <b>true</b> if it is ok to target current entity, return <b>false</b> if it is not.<br>
-                    Example: <pre>return game.entities.getName(id) != "your_friend";</pre>
+                    编写脚本来决定杀戮光环是否应该攻击特定实体。<br>
+                    使用 <b>id</b> 变量查看当前实体的id。<br>
+                    如果攻击当前实体没问题则返回 <b>true</b>，如果不行则返回 <b>false</b>。<br>
+                    示例： <pre>return game.entities.getName(id) != "your_friend";</pre>
                 </div>
                 <div class="actions">
-                    <button class="w8" @click="saveCode()">Save</button>
-                    <button class="w12" @click="showApiRef()">Show/Hide API Reference</button>
+                    <button class="w8" @click="saveCode()">保存</button>
+                    <button class="w12" @click="showApiRef()">显示/隐藏API参考</button>
                 </div>
                 <script-editor v-model="code" :type="'KILL_AURA'" v-show="!showRefs"></script-editor>
                 <ul class="refs" v-show="showRefs">

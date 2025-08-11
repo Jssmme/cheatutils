@@ -1,6 +1,6 @@
 <div class="module-main auto-craft" v-if="config">
     <div class="description">
-        Add items you want to auto craft. To start autocrafting enable module and open Crafting Table GUI.<br>
+        添加 items you want to auto craft. To start autocrafting enable module and open Crafting Table GUI.<br>
         Algorithm:
         <ol>
             <li>
@@ -26,7 +26,7 @@
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
         <item-list v-model="config.items" @change="update()"></item-list>
     </div>

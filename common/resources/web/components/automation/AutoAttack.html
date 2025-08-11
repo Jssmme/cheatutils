@@ -1,18 +1,18 @@
 <div class="module-main" v-if="config">
     <div class="description">
-        Auto Attack makes it so that holding the attack button autoswings the sword, similar to the combat snapshots.
-        Each swing is done right after the attack cooldown is done and thus will always do max possible damage.
+        自动攻击使按住攻击按钮时自动挥剑，类似于战斗快照。
+        每次挥剑都在攻击冷却结束后立即进行，因此总是造成最大可能的伤害。
     </div>
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
         <div class="flex-row">
-            <span class="field-description">Extra Ticks:</span>
+            <span class="field-description">额外刻数:</span>
             <input type="text" class="w3" v-model="config.extraTicks" @change="update()">
             <div class="section-description">
-                Wait additional ticks once cooldown passed. Can be negative, in this case module will attack before cooldown.
+                冷却结束后等待额外刻数。可以为负数，在这种情况下模组会在冷却前攻击。
             </div>
         </div>
     </div>

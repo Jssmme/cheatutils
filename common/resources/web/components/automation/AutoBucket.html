@@ -1,58 +1,58 @@
 <div class="module-main" v-if="config">
     <div class="description">
-        Automatically uses water bucket when you fall.<br>
-        Module only searches water bucket on your hotbar.<br>
-        Don't rely solely on this module, since you can die just because of bad ping.<br>
-        Don't fall on waterloggable blocks like leaves, since your water cannot be placed on top of such blocks.<br>
-        Module doesn't check if you already are falling into water.<br>
-        There was plans to add other items like cobweb or slime block.
+        当你坠落时自动落地水。<br>
+        模组只在快捷栏中搜索水桶。<br>
+        不要完全依赖这个模组，因为你可能因为网络延迟而死亡。<br>
+        不要掉在可含水方块上，如树叶，因为你的水无法放置在这样的方块上。<br>
+        模组不会检查你是否已经掉入水中。<br>
+        计划添加其他物品如蜘蛛网或粘液块。
     </div>
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
 
         <fieldset>
             <legend>
-                Speed Threshold
+                速度阈值
             </legend>
             <div>
                 <input type="text" class="w3" v-model="config.speedThreshold" @change="update()">
                 <div class="section-description">
-                    Module tries to use water bucket only if your speed (blocks/sec) if greater than specified value.
+                    只有当你的速度（格/秒）大于指定值时，模组才会尝试使用水桶。
                 </div>
             </div>
         </fieldset>
 
         <fieldset>
             <legend>
-                Items to Use
+                使用的物品
             </legend>
             <div>
-                <switch-checkbox v-model="config.useWaterBucket" @change="update()">Water Bucket</switch-checkbox>
+                <switch-checkbox v-model="config.useWaterBucket" @change="update()">水桶</switch-checkbox>
             </div>
         </fieldset>
 
         <fieldset>
             <legend>
-                <switch-checkbox v-model="config.autoPickUp" @change="update()">Auto Pick Up Water</switch-checkbox>
+                <switch-checkbox v-model="config.autoPickUp" @change="update()">自动拾取水</switch-checkbox>
             </legend>
             <div class="section-description">
-                Automatically picks up water once you land.
+                落地后自动回收水。
             </div>
         </fieldset>
 
         <fieldset>
             <legend>
-                Reach Distance
+                放置距离
             </legend>
             <div>
                 <input type="text" class="w3" v-model="config.reachDistance" @change="update()">
             </div>
             <div class="section-description">
-                Module tries to place water if distance to target block less than this distance.
-                Default Minecraft reach distance is 4.5 and it is not recommended to increase it, since even vanilla server will just reject water place actions on longer distances.
+                如果到目标方块的距离小于此距离，模组会尝试放置水。
+                默认Minecraft放置距离是4.5，不建议增加，因为即使是原版服务器也会拒绝更远距离的放置水操作。
             </div>
         </fieldset>
     </div>

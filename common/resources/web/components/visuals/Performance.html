@@ -6,14 +6,14 @@
     <div class="module-sections">
         <fieldset>
             <legend>
-                <switch-checkbox v-model="config.limitBackgroundWindowFps" @change="update()">Limit FPS in background</switch-checkbox>
+                <switch-checkbox v-model="config.limit返回groundWindowFps" @change="update()">限制后台FPS</switch-checkbox>
             </legend>
             <div class="flex-row">
-                <span class="field-description">Max FPS:</span>
+                <span class="field-description">最大FPS:</span>
                 <input type="text" class="w3" v-model="config.backgroundWindowFps" @change="update()">
             </div>
             <div class="section-description">
-                If you run AFK farms and want to do something in parallel you can reduce GPU usage by limiting FPS in background Minecraft windows.
+                如果你运行挂机农场并想要并行做其他事情，可以通过限制后台Minecraft窗口的FPS来减少GPU使用率。
             </div>
         </fieldset>
     </div>

@@ -5,7 +5,7 @@
 
     <div class="module-sections">
         <div>
-            <switch-checkbox v-model="config.enabled" @change="update()">Enabled</switch-checkbox>
+            <switch-checkbox v-model="config.enabled" @change="update()">启用</switch-checkbox>
         </div>
 
         <fieldset>
@@ -15,7 +15,7 @@
             <div>
                 <div>
                     <radio name="method" value="VanillaFly" v-model="config.method" @change="update()">
-                        Vanilla Fly (use Jump/Sneak/Forward/Backward keys to gain speed)
+                        Vanilla Fly (use Jump/Sneak/Forward/返回ward keys to gain speed)
                     </radio>
                 </div>
                 <div>
@@ -61,7 +61,7 @@
                         <input type="text" class="w3" v-model="config.vanillaFlyHorizontalAcceleration" @change="update()">
                     </td>
                     <td>
-                        <div class="input-description">Blocks/sec^2, when you hold Forward or Backward</div>
+                        <div class="input-description">Blocks/sec^2, when you hold Forward or 返回ward</div>
                     </td>
                 </tr>
             </table>

@@ -15,7 +15,7 @@
         <div class="description">
             Example 1. When assigned to button first click enables blink, second click sends packets to server teleporting you for other players to current position.
             <pre>
-if (blink.isEnabled()) {
+if (blink.is启用()) {
     blink.apply();
 } else {
     blink.enable();
@@ -23,9 +23,9 @@ if (blink.isEnabled()) {
             </pre>
         </div>
         <div class="description">
-            Example 2. Add this to <b>Status Overlay</b> script to see blink status under crosshair.
+            Example 2. 添加 this to <b>Status Overlay</b> script to see blink status under crosshair.
             <pre>
-if (blink.isEnabled()) {
+if (blink.is启用()) {
     overlay.center();
     overlay.middle();
     overlay.add("");
@@ -36,10 +36,10 @@ if (blink.isEnabled()) {
             </pre>
         </div>
         <div class="description">
-            Example 3. Add this to <b>Events Scripting</b> to automatically disable blink if distance > 10 blocks, or captured packets > 50.
+            Example 3. 添加 this to <b>Events Scripting</b> to automatically disable blink if distance > 10 blocks, or captured packets > 50.
             <pre>
 events.onTickEnd(() => {
-    if (blink.isEnabled()) {
+    if (blink.is启用()) {
         if (blink.getDistance() > 10 || blink.getPackets() > 50) {
             blink.disable();
         }

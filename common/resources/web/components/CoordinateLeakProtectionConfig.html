@@ -1,6 +1,6 @@
 <div>
     <div>
-        <button style="width: 200px;" @click="$emit('back')">Back</button>
+        <button style="width: 200px;" @click="$emit('back')">返回</button>
     </div>
     <div class="module-main" v-if="config">
         <h2 class="module-header">Coordinate Leak Protection</h2>
@@ -14,7 +14,7 @@
                     <input type="checkbox" class="switch"
                         v-model="config.enabled"
                         @change="update()">
-                    <span>Enabled</span>
+                    <span>启用</span>
                 </label>
             </div>
         </div>

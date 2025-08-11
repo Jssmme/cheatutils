@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <title>Zergatul Cheat Utils</title>
@@ -16,13 +16,13 @@
     <div id="vue-app">
         <div class="main-header">
             <div class="title">
-                <a href="/#">cheatutils</a>
+                <a href="/#">cheatutils（JSSM汉化）</a>
                 <template v-if="module">
                     → <a :href="'/#/' + module.path">{{ module.name }}</a>
                 </template>
             </div>
             <div class="search">
-                <input type="text" placeholder="Search modules..."
+                <input type="text" placeholder="搜索模组..."
                     v-if="isMain()"
                     v-model="search"
                     ref="searchInput"
